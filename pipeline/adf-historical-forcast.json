@@ -69,9 +69,6 @@
 									"type": "Expression"
 								},
 								"method": "GET",
-								"headers": {
-									"test": "test"
-								},
 								"linkedServices": [
 									{
 										"referenceName": "LinkedService_AzureBlobStore",
