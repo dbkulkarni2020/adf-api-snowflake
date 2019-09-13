@@ -47,6 +47,33 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "CityList_APICall",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*.json"
+						}
+					},
+					"dataset": {
+						"referenceName": "blob_historical_weather",
+						"type": "DatasetReference"
+					}
+				}
 			}
 		],
 		"concurrency": 1,
