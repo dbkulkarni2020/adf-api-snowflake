@@ -69,6 +69,12 @@
 									"type": "Expression"
 								},
 								"method": "GET",
+								"linkedServices": [
+									{
+										"referenceName": "LinkedService_REST_Historical_Forcast",
+										"type": "LinkedServiceReference"
+									}
+								],
 								"datasets": [
 									{
 										"referenceName": "JSON_For_WebAPI_Output",
