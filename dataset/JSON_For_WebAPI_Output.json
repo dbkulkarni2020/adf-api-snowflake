@@ -1,0 +1,17 @@
+{
+	"name": "JSON_For_WebAPI_Output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedService_AzureBlobStore",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "webapi-call-output"
+			}
+		}
+	}
+}
