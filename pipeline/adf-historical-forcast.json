@@ -76,6 +76,7 @@
 									"type": "JsonSink",
 									"storeSettings": {
 										"type": "AzureBlobStorageWriteSettings",
+										"maxConcurrentConnections": 0,
 										"copyBehavior": {
 											"value": "@Item.City",
 											"type": "Expression"
@@ -83,7 +84,8 @@
 									},
 									"formatSettings": {
 										"type": "JsonWriteSettings",
-										"quoteAllText": true
+										"quoteAllText": true,
+										"filePattern": "arrayOfObjects"
 									}
 								},
 								"enableStaging": false
