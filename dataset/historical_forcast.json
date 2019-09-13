@@ -1,0 +1,13 @@
+{
+	"name": "historical_forcast",
+	"properties": {
+		"description": "Capture historical forecast from data.gov.uk",
+		"linkedServiceName": {
+			"referenceName": "LinkedService_REST_Historical_Forcast",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
