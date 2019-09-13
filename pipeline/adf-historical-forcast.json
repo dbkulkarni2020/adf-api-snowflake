@@ -49,7 +49,38 @@
 						"value": "@activity('Lookup_GetCityList').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "CallWebAPI",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"url": "https://api-metoffice.apiconnect.ibmcloud.com/metoffice/production",
+								"method": "GET",
+								"linkedServices": [
+									{
+										"referenceName": "LinkedService_REST_Historical_Forcast",
+										"type": "LinkedServiceReference"
+									}
+								],
+								"datasets": [
+									{
+										"referenceName": "blob_historical_weather",
+										"type": "DatasetReference"
+									}
+								]
+							}
+						}
+					]
 				}
 			}
 		],
