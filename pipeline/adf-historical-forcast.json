@@ -43,6 +43,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('GetAPIDataForEachCity').output",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "GetAPIDataForEachCity",
