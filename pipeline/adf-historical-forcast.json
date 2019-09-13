@@ -80,7 +80,7 @@
 										"type": "AzureBlobStorageWriteSettings",
 										"maxConcurrentConnections": 0,
 										"copyBehavior": {
-											"value": "@Item.City",
+											"value": "@{item().City}",
 											"type": "Expression"
 										}
 									},
