@@ -43,70 +43,7 @@
 						]
 					}
 				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('Lookup_GetCityList').output.value",
-						"type": "Expression"
-					},
-					"isSequential": true,
-					"activities": [
-						{
-							"name": "GetAPIDataForEachCity",
-							"description": "Capture historical forecast ",
-							"type": "Copy",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "RestSource",
-									"httpRequestTimeout": "00:01:40",
-									"requestInterval": "00.00:00:00.010",
-									"requestMethod": {
-										"value": "@{item().City}",
-										"type": "Expression"
-									}
-								},
-								"sink": {
-									"type": "JsonSink",
-									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings",
-										"maxConcurrentConnections": 0,
-										"copyBehavior": {
-											"value": "@{item().City}",
-											"type": "Expression"
-										}
-									},
-									"formatSettings": {
-										"type": "JsonWriteSettings",
-										"quoteAllText": true,
-										"filePattern": "arrayOfObjects"
-									}
-								},
-								"enableStaging": false
-							},
-							"inputs": [
-								{
-									"referenceName": "historical_forcast",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "blob_historical_weather",
-									"type": "DatasetReference"
-								}
-							]
-						}
-					]
-				}
+				"userProperties": []
 			}
 		],
 		"concurrency": 1,
