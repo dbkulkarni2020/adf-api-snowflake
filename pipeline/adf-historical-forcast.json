@@ -45,7 +45,7 @@
 				"typeProperties": {
 					"activities": [
 						{
-							"name": "Copy1",
+							"name": "GetAPIDataForEachCity",
 							"description": "Capture historical forecast ",
 							"type": "Copy",
 							"dependsOn": [],
