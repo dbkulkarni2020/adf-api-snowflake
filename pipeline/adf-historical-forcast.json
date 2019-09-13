@@ -21,13 +21,15 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFileName": "*.json"
+							"wildcardFileName": "*.json",
+							"enablePartitionDiscovery": false
 						}
 					},
 					"dataset": {
 						"referenceName": "blob_historical_weather",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
