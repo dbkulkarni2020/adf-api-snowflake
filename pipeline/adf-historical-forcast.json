@@ -77,7 +77,7 @@
 								],
 								"datasets": [
 									{
-										"referenceName": "historical_forcast",
+										"referenceName": "JSON_For_WebAPI_Output",
 										"type": "DatasetReference"
 									}
 								]
