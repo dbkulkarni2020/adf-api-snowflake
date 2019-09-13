@@ -68,7 +68,13 @@
 									"value": "http://api.openweathermap.org/data/2.5/weather?APPID=3b57dd0a2acb41fc8430fc63feb7e474&q=hurn",
 									"type": "Expression"
 								},
-								"method": "GET"
+								"method": "GET",
+								"datasets": [
+									{
+										"referenceName": "JSON_For_WebAPI_Output",
+										"type": "DatasetReference"
+									}
+								]
 							}
 						}
 					]
