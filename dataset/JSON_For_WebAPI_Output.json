@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "DP.JSON",
 				"container": "webapi-call-output"
 			}
 		}
