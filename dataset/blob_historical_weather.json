@@ -11,7 +11,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "historical-weather"
+				"container": "config"
 			}
 		}
 	}
