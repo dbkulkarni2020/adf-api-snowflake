@@ -71,7 +71,7 @@
 								"method": "GET",
 								"linkedServices": [
 									{
-										"referenceName": "LinkedService_REST_Historical_Forcast",
+										"referenceName": "LinkedService_AzureBlobStore",
 										"type": "LinkedServiceReference"
 									}
 								],
