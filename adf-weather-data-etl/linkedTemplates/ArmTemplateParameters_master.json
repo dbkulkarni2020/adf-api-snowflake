@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-weather-data-etl"
+		},
+		"LinkedService_AzureBlobStore_connectionString": {
+			"value": ""
+		},
+		"LinkedService_REST_Historical_Forcast_properties_typeProperties_url": {
+			"value": "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3b57dd0a2acb41fc8430fc63feb7e474"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
