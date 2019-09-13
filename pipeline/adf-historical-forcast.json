@@ -1,0 +1,8 @@
+{
+	"name": "adf-historical-forcast",
+	"properties": {
+		"description": "Captures historical forecast for meteorological stations from data.gov.uk, and then for the above meteorological stations, constantly ingest current weather and future forecasts data from openweathermap",
+		"concurrency": 1,
+		"annotations": []
+	}
+}
