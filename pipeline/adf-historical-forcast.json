@@ -75,7 +75,11 @@
 								"sink": {
 									"type": "JsonSink",
 									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings"
+										"type": "AzureBlobStorageWriteSettings",
+										"copyBehavior": {
+											"value": "@Item.City",
+											"type": "Expression"
+										}
 									},
 									"formatSettings": {
 										"type": "JsonWriteSettings",
