@@ -65,7 +65,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"url": {
-									"value": "http://api.openweathermap.org/data/2.5/weather?APPID=3b57dd0a2acb41fc8430fc63feb7e474&q=hurn",
+									"value": "api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3b57dd0a2acb41fc8430fc63feb7e474",
 									"type": "Expression"
 								},
 								"method": "GET",
