@@ -4,7 +4,7 @@
 		"description": "Captures historical forecast for meteorological stations from data.gov.uk, and then for the above meteorological stations, constantly ingest current weather and future forecasts data from openweathermap",
 		"activities": [
 			{
-				"name": "CityList_APICall",
+				"name": "Lookup_GetCityList",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -35,7 +35,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "CityList_APICall",
+						"activity": "Lookup_GetCityList",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -47,6 +47,7 @@
 						"value": "@activity('GetAPIDataForEachCity').output",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "GetAPIDataForEachCity",
