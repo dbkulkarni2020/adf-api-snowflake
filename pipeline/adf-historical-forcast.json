@@ -4,58 +4,6 @@
 		"description": "Captures historical forecast for meteorological stations from data.gov.uk, and then for the above meteorological stations, constantly ingest current weather and future forecasts data from openweathermap",
 		"activities": [
 			{
-				"name": "Copy1-Historical-forcast",
-				"description": "Capture historical forecast ",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "CityList_APICall",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "RestSource",
-						"httpRequestTimeout": "00:01:40",
-						"requestInterval": "00.00:00:00.010",
-						"requestMethod": "GET"
-					},
-					"sink": {
-						"type": "JsonSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "JsonWriteSettings",
-							"quoteAllText": true
-						}
-					},
-					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "historical_forcast",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "blob_historical_weather",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
 				"name": "CityList_APICall",
 				"type": "Lookup",
 				"dependsOn": [],
@@ -85,7 +33,14 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "CityList_APICall",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"activities": [
