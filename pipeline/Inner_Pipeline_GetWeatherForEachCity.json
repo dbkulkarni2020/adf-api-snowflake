@@ -8,6 +8,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "\"Test\"",
+						"type": "Expression"
+					},
 					"isSequential": true
 				}
 			}
