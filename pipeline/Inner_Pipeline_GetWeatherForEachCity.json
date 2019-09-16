@@ -27,7 +27,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"url": "api.openweathermap.org/data/2.5/weather?q=Pune",
+								"url": "http://api.openweathermap.org/data/2.5/forecast/daily",
 								"method": "GET",
 								"linkedServices": [
 									{
