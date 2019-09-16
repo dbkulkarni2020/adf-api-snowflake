@@ -29,6 +29,10 @@
 							"typeProperties": {
 								"url": "http://api.openweathermap.org/data/2.5/forecast/daily",
 								"method": "GET",
+								"headers": {
+									"APPID": "3b57dd0a2acb41fc8430fc63feb7e474",
+									"City": "Pune"
+								},
 								"linkedServices": [
 									{
 										"referenceName": "LinkedService_REST_Historical_Forcast",
