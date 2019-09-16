@@ -8,10 +8,6 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"items": {
-						"value": "\"CityName\"",
-						"type": "Expression"
-					},
 					"isSequential": true,
 					"activities": [
 						{
