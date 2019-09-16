@@ -35,6 +35,19 @@
 			{
 				"name": "ForEach_CallAPI",
 				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup_GetCityList').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true
+				}
+			},
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
 						"activity": "Lookup_GetCityList",
@@ -45,98 +58,12 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"items": {
-						"value": "@activity('Lookup_GetCityList').output.value",
-						"type": "Expression"
+					"pipeline": {
+						"referenceName": "Inner_Pipeline_GetWeatherForEachCity",
+						"type": "PipelineReference"
 					},
-					"isSequential": true,
-					"activities": [
-						{
-							"name": "WebAPITask",
-							"type": "WebActivity",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"url": {
-									"value": "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3b57dd0a2acb41fc8430fc63feb7e474",
-									"type": "Expression"
-								},
-								"method": "GET",
-								"linkedServices": [
-									{
-										"referenceName": "LinkedService_REST_Historical_Forcast",
-										"type": "LinkedServiceReference"
-									}
-								],
-								"datasets": [
-									{
-										"referenceName": "historical_forcast",
-										"type": "DatasetReference"
-									}
-								]
-							}
-						}
-					]
+					"waitOnCompletion": true
 				}
-			},
-			{
-				"name": "Copy Data1",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "ForEach_CallAPI",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "RestSource",
-						"httpRequestTimeout": "00:01:40",
-						"requestInterval": "00.00:00:00.010",
-						"requestMethod": "GET"
-					},
-					"sink": {
-						"type": "JsonSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "JsonWriteSettings",
-							"quoteAllText": true,
-							"filePattern": "setOfObjects"
-						}
-					},
-					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "historical_forcast",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "JSON_For_WebAPI_Output",
-						"type": "DatasetReference"
-					}
-				]
 			}
 		],
 		"concurrency": 1,
