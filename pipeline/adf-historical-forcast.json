@@ -148,7 +148,13 @@
 						"referenceName": "Inner_Pipeline_GetWeatherForEachCity",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true
+					"waitOnCompletion": true,
+					"parameters": {
+						"citylist": {
+							"value": "@activity('Lookup_GetCityList').output",
+							"type": "Expression"
+						}
+					}
 				}
 			}
 		],
