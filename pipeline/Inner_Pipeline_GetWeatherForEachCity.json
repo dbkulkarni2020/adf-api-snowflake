@@ -1,0 +1,21 @@
+{
+	"name": "Inner_Pipeline_GetWeatherForEachCity",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup_GetCityList').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}
