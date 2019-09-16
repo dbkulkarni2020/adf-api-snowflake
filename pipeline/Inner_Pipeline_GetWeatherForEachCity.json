@@ -8,10 +8,6 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"items": {
-						"value": "@activity('Lookup_GetCityList').output.value",
-						"type": "Expression"
-					},
 					"isSequential": true
 				}
 			}
