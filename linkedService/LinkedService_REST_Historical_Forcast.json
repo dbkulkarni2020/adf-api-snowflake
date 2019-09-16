@@ -5,7 +5,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3b57dd0a2acb41fc8430fc63feb7e474",
+			"url": "http://api.openweathermap.org/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
