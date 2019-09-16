@@ -64,7 +64,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"url": "http://api.openweathermap.org/data/2.5/forecast/daily?q={0}APPID={1}",
+								"url": " http://api.openweathermap.org/data/2.5/weather?q=pune&APPID=3b57dd0a2acb41fc8430fc63feb7e474",
 								"method": "GET",
 								"headers": {
 									"q": "Pune",
