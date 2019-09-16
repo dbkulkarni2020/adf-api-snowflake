@@ -132,7 +132,7 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline1",
+				"name": "Inner_pipeline_GetWeatherForEachCity",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
