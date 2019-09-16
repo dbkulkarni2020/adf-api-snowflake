@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "\"Test\"",
+						"value": "\"CityName\"",
 						"type": "Expression"
 					},
 					"isSequential": true
