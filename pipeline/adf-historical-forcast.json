@@ -64,7 +64,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"url": "http://api.openweathermap.org/data/2.5/forecast/daily",
+								"url": "http://api.openweathermap.org/data/weather/",
 								"method": "GET",
 								"headers": {
 									"APPID": "3b57dd0a2acb41fc8430fc63feb7e474",
