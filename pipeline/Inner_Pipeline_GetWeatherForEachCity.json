@@ -12,7 +12,38 @@
 						"value": "\"CityName\"",
 						"type": "Expression"
 					},
-					"isSequential": true
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Web1",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"url": "api.openweathermap.org/data/2.5/weather?q=Pune",
+								"method": "GET",
+								"linkedServices": [
+									{
+										"referenceName": "LinkedService_REST_Historical_Forcast",
+										"type": "LinkedServiceReference"
+									}
+								],
+								"datasets": [
+									{
+										"referenceName": "historical_forcast",
+										"type": "DatasetReference"
+									}
+								]
+							}
+						}
+					]
 				}
 			}
 		],
