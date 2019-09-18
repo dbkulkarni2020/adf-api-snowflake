@@ -69,7 +69,7 @@
 								"headers": {
 									"APPKEY": "3b57dd0a2acb41fc8430fc63feb7e474",
 									"q": {
-										"value": "@activity('Lookup_GetCityList').output",
+										"value": "@activity('lkp_getcitylist').output",
 										"type": "Expression"
 									}
 								},
