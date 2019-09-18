@@ -15,7 +15,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Web1",
+							"name": "Current_Weather",
 							"type": "WebActivity",
 							"dependsOn": [],
 							"policy": {
