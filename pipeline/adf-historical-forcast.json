@@ -64,14 +64,11 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"url": "http://api.openweathermap.org/data/2.5/weather?APPID=3b57dd0a2acb41fc8430fc63feb7e474",
+								"url": "http://api.openweathermap.org/data/2.5/weather?q={0}&APPID={1}",
 								"method": "GET",
 								"headers": {
-									"q": {
-										"value": "@item().city",
-										"type": "Expression"
-									},
-									"APPID": "3b57dd0a2acb41fc8430fc63feb7e474"
+									"APPID": "3b57dd0a2acb41fc8430fc63feb7e474",
+									"q": "@item().city"
 								},
 								"linkedServices": [
 									{
