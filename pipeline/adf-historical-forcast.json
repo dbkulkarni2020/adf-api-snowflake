@@ -103,6 +103,17 @@
 									"requestInterval": "00.00:00:00.010",
 									"requestMethod": "GET"
 								},
+								"sink": {
+									"type": "JsonSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "JsonWriteSettings",
+										"quoteAllText": true,
+										"filePattern": "arrayOfObjects"
+									}
+								},
 								"enableStaging": false
 							},
 							"inputs": [
@@ -116,6 +127,12 @@
 											"type": "Expression"
 										}
 									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "JSON_For_WebAPI_Output",
+									"type": "DatasetReference"
 								}
 							]
 						}
