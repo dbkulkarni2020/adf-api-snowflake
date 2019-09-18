@@ -114,6 +114,12 @@
 			}
 		],
 		"concurrency": 1,
+		"parameters": {
+			"city": {
+				"type": "array",
+				"defaultValue": "['Mumbai','Pune']"
+			}
+		},
 		"annotations": []
 	}
 }
