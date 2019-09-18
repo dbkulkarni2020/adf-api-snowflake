@@ -18,7 +18,7 @@
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": "http://api.openweathermap.org"
+			"relativeUrl": "http://api.openweathermap.org/data/2.5/forecast?q={0}&APPID={1}"
 		},
 		"schema": []
 	}
