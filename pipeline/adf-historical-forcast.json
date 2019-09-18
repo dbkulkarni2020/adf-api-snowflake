@@ -64,7 +64,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"url": "http://api.openweathermap.org/data/2.5/weather?q={0}&APPID={1}",
+								"url": "http://api.openweathermap.org/data/2.5/forecast?q={0}&APPID={1}",
 								"method": "GET",
 								"headers": {
 									"q": "@item().city",
