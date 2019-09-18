@@ -29,7 +29,7 @@
 						"referenceName": "blob_historical_weather",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": true
+					"firstRowOnly": false
 				}
 			},
 			{
