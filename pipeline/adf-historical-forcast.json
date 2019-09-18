@@ -4,7 +4,7 @@
 		"description": "Captures historical forecast for meteorological stations from data.gov.uk, and then for the above meteorological stations, constantly ingest current weather and future forecasts data from openweathermap",
 		"activities": [
 			{
-				"name": "Lookup_GetCityList",
+				"name": "lkp_getcitylist",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -37,7 +37,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Lookup_GetCityList",
+						"activity": "lkp_getcitylist",
 						"dependencyConditions": [
 							"Succeeded"
 						]
