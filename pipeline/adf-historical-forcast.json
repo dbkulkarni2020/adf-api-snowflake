@@ -67,7 +67,6 @@
 								"url": "http://api.openweathermap.org/data/2.5/weather?APPID=3b57dd0a2acb41fc8430fc63feb7e474",
 								"method": "GET",
 								"headers": {
-									"APIID": "3b57dd0a2acb41fc8430fc63feb7e474",
 									"q": {
 										"value": "@item().city",
 										"type": "Expression"
