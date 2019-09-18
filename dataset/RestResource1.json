@@ -1,0 +1,18 @@
+{
+	"name": "RestResource1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedService_REST_Historical_Forcast",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"appkey": {
+				"type": "string",
+				"defaultValue": "3b57dd0a2acb41fc8430fc63feb7e474"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
