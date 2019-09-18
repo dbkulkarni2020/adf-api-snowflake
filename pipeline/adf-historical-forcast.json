@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('lkp_getcitylist').output.value[0].tablename",
+						"value": "@activity('lkp_getcitylist').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
