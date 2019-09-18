@@ -69,7 +69,7 @@
 								},
 								{
 									"name": "Destination",
-									"value": "webapi-call-output//@{activity.output.value}"
+									"value": "webapi-call-output//@pipeline().parameters.city"
 								}
 							],
 							"typeProperties": {
