@@ -52,39 +52,6 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "WebActivity1",
-							"type": "WebActivity",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"url": "http://api.openweathermap.org/data/2.5/forecast?q={0}&APPID={1}",
-								"method": "GET",
-								"headers": {
-									"q": "@item().city",
-									"appid": "3b57dd0a2acb41fc8430fc63feb7e474"
-								},
-								"linkedServices": [
-									{
-										"referenceName": "LinkedService_REST_Historical_Forcast",
-										"type": "LinkedServiceReference"
-									}
-								],
-								"datasets": [
-									{
-										"referenceName": "historical_forcast",
-										"type": "DatasetReference"
-									}
-								]
-							}
-						},
-						{
 							"name": "Copy Data1",
 							"type": "Copy",
 							"dependsOn": [],
