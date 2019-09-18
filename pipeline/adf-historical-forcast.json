@@ -62,7 +62,16 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "http://api.openweathermap.org/data/2.5/forecast?q={0}&APPID={1}"
+								},
+								{
+									"name": "Destination",
+									"value": "webapi-call-output//@{activity.output.value}"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "RestSource",
