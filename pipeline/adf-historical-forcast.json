@@ -69,7 +69,7 @@
 								"headers": {
 									"APPID": "3b57dd0a2acb41fc8430fc63feb7e474",
 									"q": {
-										"value": "@activity('lkp_getcitylist').output",
+										"value": "@item().city",
 										"type": "Expression"
 									}
 								},
