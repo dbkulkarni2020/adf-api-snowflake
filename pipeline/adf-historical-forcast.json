@@ -26,7 +26,7 @@
 						}
 					},
 					"dataset": {
-						"referenceName": "blob_historical_weather",
+						"referenceName": "Config_CityList_APICall",
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
