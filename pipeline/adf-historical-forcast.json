@@ -70,7 +70,8 @@
 									"q": {
 										"value": "@item().city",
 										"type": "Expression"
-									}
+									},
+									"APPID": "3b57dd0a2acb41fc8430fc63feb7e474"
 								},
 								"linkedServices": [
 									{
