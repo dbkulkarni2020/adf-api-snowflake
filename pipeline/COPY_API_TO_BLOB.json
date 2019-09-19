@@ -49,13 +49,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_tpb",
+						"referenceName": "SourceDataset_CurrentWeather",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_tpb",
+						"referenceName": "DestinationDatasetBlob_CurrentWeather",
 						"type": "DatasetReference"
 					}
 				]
@@ -63,7 +63,14 @@
 			{
 				"name": "Copy_Forecasted_Weather_Data",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Copy_Current_Weather_Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -106,13 +113,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_tpb",
+						"referenceName": "SourceDataset_CurrentWeather",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_tpb",
+						"referenceName": "DestinationDatasetBlob_CurrentWeather",
 						"type": "DatasetReference"
 					}
 				]
