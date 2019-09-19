@@ -7,7 +7,7 @@
 		},
 		"parameters": {
 			"q": {
-				"type": "array",
+				"type": "string",
 				"defaultValue": "Latur"
 			}
 		},
