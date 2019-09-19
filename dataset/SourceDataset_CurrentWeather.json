@@ -1,5 +1,5 @@
 {
-	"name": "SourceDataset_tpb",
+	"name": "SourceDataset_CurrentWeather",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LinkedRestService_CurrentAndForecasted_Weather",
