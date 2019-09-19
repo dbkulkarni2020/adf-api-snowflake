@@ -65,7 +65,7 @@
 							"userProperties": [
 								{
 									"name": "Source",
-									"value": "http://api.openweathermap.org/data/2.5/weather?APPID={1}&q={0}"
+									"value": "http://api.openweathermap.org/data/2.5/weather?APPID={1}"
 								},
 								{
 									"name": "Destination",
