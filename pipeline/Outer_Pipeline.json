@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('CityList').output",
+						"value": "@activity('CityList').output.value",
 						"type": "Expression"
 					},
 					"isSequential": false,
