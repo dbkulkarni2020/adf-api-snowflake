@@ -9,6 +9,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('CityList').output.value",
+						"type": "Expression"
+					},
 					"isSequential": true,
 					"activities": [
 						{
