@@ -94,7 +94,11 @@
 								"sink": {
 									"type": "JsonSink",
 									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings"
+										"type": "AzureBlobStorageWriteSettings",
+										"copyBehavior": {
+											"value": "@activity('City').output",
+											"type": "Expression"
+										}
 									},
 									"formatSettings": {
 										"type": "JsonWriteSettings",
@@ -154,7 +158,11 @@
 								"sink": {
 									"type": "JsonSink",
 									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings"
+										"type": "AzureBlobStorageWriteSettings",
+										"copyBehavior": {
+											"value": "@activity('City').output",
+											"type": "Expression"
+										}
 									},
 									"formatSettings": {
 										"type": "JsonWriteSettings",
