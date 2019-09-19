@@ -5,12 +5,6 @@
 			"referenceName": "LinkedRestService_CurrentAndForecasted_Weather",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"q": {
-				"type": "string",
-				"defaultValue": "hurn"
-			}
-		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
