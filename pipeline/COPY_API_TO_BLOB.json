@@ -17,7 +17,7 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "http://api.openweathermap.org/data/2.5/weather?q=Pune&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474"
+						"value": "http://api.openweathermap.org/data/2.5/weather?APIKEY=3b57dd0a2acb41fc8430fc63feb7e474"
 					},
 					{
 						"name": "Destination",
@@ -29,7 +29,10 @@
 						"type": "RestSource",
 						"httpRequestTimeout": "00:01:40",
 						"requestInterval": "00.00:00:00.010",
-						"requestMethod": "GET"
+						"requestMethod": "GET",
+						"additionalHeaders": {
+							"q": "Pune"
+						}
 					},
 					"sink": {
 						"type": "JsonSink",
@@ -78,11 +81,11 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "http://api.openweathermap.org/data/2.5/weather?q=Pune&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474"
+						"value": "http://api.openweathermap.org/data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474"
 					},
 					{
 						"name": "Destination",
-						"value": "current-weather-output-files//"
+						"value": "forecasted-weather-output-files//"
 					}
 				],
 				"typeProperties": {
