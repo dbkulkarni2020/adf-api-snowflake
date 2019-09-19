@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"city": {
+			"q": {
 				"type": "string",
 				"defaultValue": "pune"
 			}
