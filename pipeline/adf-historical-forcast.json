@@ -62,7 +62,16 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": " http://api.openweathermap.org/data/2.5/weather?APPID=3b57dd0a2acb41fc8430fc63feb7e474"
+								},
+								{
+									"name": "Destination",
+									"value": "config//city.json"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "RestSource",
