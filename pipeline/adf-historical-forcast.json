@@ -100,7 +100,7 @@
 									"referenceName": "historical_forcast",
 									"type": "DatasetReference",
 									"parameters": {
-										"APPID": "3b57dd0a2acb41fc8430fc63feb7e474",
+										"appid": "3b57dd0a2acb41fc8430fc63feb7e474",
 										"q": "pune"
 									}
 								}
