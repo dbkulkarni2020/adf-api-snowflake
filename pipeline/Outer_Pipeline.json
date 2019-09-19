@@ -98,7 +98,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tableList": {
-											"value": "@activity('CityList').output",
+											"value": "@activity('CityList').output.value",
 											"type": "Expression"
 										}
 									}
