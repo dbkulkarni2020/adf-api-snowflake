@@ -17,7 +17,7 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "http://api.openweathermap.org/data/2.5/weather?APIKEY=3b57dd0a2acb41fc8430fc63feb7e474"
+						"value": "http://api.openweathermap.org/data/2.5/weather?APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q={0}"
 					},
 					{
 						"name": "Destination",
