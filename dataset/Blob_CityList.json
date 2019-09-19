@@ -1,0 +1,25 @@
+{
+	"name": "Blob_CityList",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BlobStorage_For_API_Output",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "config"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"city": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
