@@ -56,7 +56,7 @@
 				],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('CityList').output.value",
+						"value": "@activity('City').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -108,7 +108,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"q": {
-											"value": "@activity('CityList').output",
+											"value": "@activity('City').output",
 											"type": "Expression"
 										}
 									}
