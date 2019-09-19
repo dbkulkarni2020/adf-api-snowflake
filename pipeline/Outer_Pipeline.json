@@ -46,8 +46,8 @@
 						"type": "JsonSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"wildcardFileName": "*.json"
+							"recursive": false,
+							"enablePartitionDiscovery": false
 						}
 					},
 					"dataset": {
