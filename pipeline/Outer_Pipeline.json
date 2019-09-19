@@ -21,13 +21,7 @@
 						"referenceName": "COPY_API_TO_BLOB",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true,
-					"parameters": {
-						"CityList": {
-							"value": "@activity('CityList').output.value",
-							"type": "Expression"
-						}
-					}
+					"waitOnCompletion": true
 				}
 			},
 			{
