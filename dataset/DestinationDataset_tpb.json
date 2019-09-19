@@ -10,8 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "data.json",
-				"container": "webapi-call-output"
+				"container": "current-weather-output-files"
 			}
 		}
 	}
