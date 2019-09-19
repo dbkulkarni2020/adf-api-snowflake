@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@pipeline().parameters.city",
+						"value": "@activity('lkp_getcitylist').output",
 						"type": "Expression"
 					},
 					"isSequential": true,
