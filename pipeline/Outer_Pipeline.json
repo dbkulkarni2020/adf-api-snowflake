@@ -56,7 +56,7 @@
 				],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('CityList').output.value",
+						"value": "@activity('CityList').output",
 						"type": "Expression"
 					},
 					"isSequential": true,
