@@ -49,38 +49,7 @@
 						"value": "@pipeline().parameters.city",
 						"type": "Expression"
 					},
-					"isSequential": true,
-					"activities": [
-						{
-							"name": "WebActivity1",
-							"type": "WebActivity",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"url": "http://api.openweathermap.org/data/2.5/weather?q=Pune&APPID=3b57dd0a2acb41fc8430fc63feb7e474",
-								"method": "GET",
-								"linkedServices": [
-									{
-										"referenceName": "LinkedService_REST_Historical_Forcast",
-										"type": "LinkedServiceReference"
-									}
-								],
-								"datasets": [
-									{
-										"referenceName": "historical_forcast",
-										"type": "DatasetReference"
-									}
-								]
-							}
-						}
-					]
+					"isSequential": true
 				}
 			}
 		],
