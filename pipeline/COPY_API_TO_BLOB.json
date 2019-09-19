@@ -9,6 +9,7 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Copy_Forecasted_Weather_Data1",
