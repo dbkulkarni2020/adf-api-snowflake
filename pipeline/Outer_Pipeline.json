@@ -152,7 +152,7 @@
 									"referenceName": "SourceDataset_CurrentWeather",
 									"type": "DatasetReference",
 									"parameters": {
-										"tableList": "@activity('City').output"
+										"q": "@activity('City').output"
 									}
 								}
 							],
