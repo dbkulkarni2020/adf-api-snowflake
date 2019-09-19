@@ -6,8 +6,9 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"tableList": {
-				"type": "array"
+			"q": {
+				"type": "string",
+				"defaultValue": "Pune"
 			}
 		},
 		"annotations": [],
