@@ -49,7 +49,7 @@
 						"value": "@activity('CityList').output",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Copy2",
@@ -65,7 +65,7 @@
 							"userProperties": [
 								{
 									"name": "Source",
-									"value": "http://api.openweathermap.org/data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=hurn"
+									"value": "http://api.openweathermap.org/data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474"
 								},
 								{
 									"name": "Destination",
