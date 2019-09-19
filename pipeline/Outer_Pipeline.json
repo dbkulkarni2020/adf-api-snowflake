@@ -4,7 +4,7 @@
 		"description": "This Pipeline execute inner pipeline which loops through list of cities and pulls weather logs for these cities",
 		"activities": [
 			{
-				"name": "CityList",
+				"name": "City",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -42,7 +42,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "CityList",
+						"activity": "City",
 						"dependencyConditions": [
 							"Succeeded"
 						]
