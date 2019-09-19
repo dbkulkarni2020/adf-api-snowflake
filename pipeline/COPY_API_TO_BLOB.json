@@ -120,7 +120,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDatasetBlob_CurrentWeather",
+						"referenceName": "DestinationDatasetBlob_ForecastedWeather",
 						"type": "DatasetReference"
 					}
 				]
