@@ -5,6 +5,11 @@
 			"referenceName": "LinkedRestService_CurrentAndForecasted_Weather",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"tableList": {
+				"type": "array"
+			}
+		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
