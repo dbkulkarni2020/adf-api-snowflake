@@ -93,7 +93,7 @@
 									"formatSettings": {
 										"type": "JsonWriteSettings",
 										"quoteAllText": true,
-										"filePattern": "setOfObjects"
+										"filePattern": "arrayOfObjects"
 									}
 								},
 								"enableStaging": false
