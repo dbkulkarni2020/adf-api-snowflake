@@ -64,12 +64,8 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"url": "http://api.openweathermap.org/data/2.5/weather",
+								"url": "http://api.openweathermap.org/data/2.5/weather?q=Pune&APPID=3b57dd0a2acb41fc8430fc63feb7e474",
 								"method": "GET",
-								"headers": {
-									"APPID": "3b57dd0a2acb41fc8430fc63feb7e474",
-									"q": "Pune"
-								},
 								"linkedServices": [
 									{
 										"referenceName": "LinkedService_REST_Historical_Forcast",
