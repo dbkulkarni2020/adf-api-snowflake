@@ -127,7 +127,16 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "data/2.5/weather?APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}"
+								},
+								{
+									"name": "Destination",
+									"value": "current-weather-output-files//"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "RestSource",
