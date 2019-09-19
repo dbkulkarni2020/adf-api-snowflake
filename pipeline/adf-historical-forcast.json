@@ -50,7 +50,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "config//city.json"
+					},
+					{
+						"name": "Destination",
+						"value": "webapi-call-output//@{activity.output.value}"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "JsonSource",
