@@ -5,6 +5,12 @@
 			"referenceName": "LinkedRestService_CurrentAndForecasted_Weather",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"q": {
+				"type": "string",
+				"defaultValue": "Mumbai"
+			}
+		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
