@@ -96,7 +96,8 @@
 						"requestInterval": "00.00:00:00.010",
 						"requestMethod": "GET",
 						"additionalHeaders": {
-							"APIKEY": "3b57dd0a2acb41fc8430fc63feb7e474"
+							"APIKEY": "3b57dd0a2acb41fc8430fc63feb7e474",
+							"q": "Mumbai"
 						}
 					},
 					"sink": {
