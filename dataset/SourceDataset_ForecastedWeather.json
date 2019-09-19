@@ -14,7 +14,7 @@
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": ""
+			"relativeUrl": " http://api.openweathermap.org/data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q={0}"
 		},
 		"schema": []
 	}
