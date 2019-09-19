@@ -140,6 +140,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"CityList": {
+				"type": "array"
+			}
+		},
 		"annotations": []
 	}
 }
