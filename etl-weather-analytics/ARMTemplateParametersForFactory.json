@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "etl-weather-analytics"
+		},
+		"BlobStorage_For_API_Output_connectionString": {
+			"value": ""
+		},
+		"LinkedRestService_CurrentAndForecasted_Weather_password": {
+			"value": ""
+		},
+		"LinkedRestService_CurrentAndForecasted_Weather_properties_typeProperties_url": {
+			"value": "http://api.openweathermap.org/"
+		},
+		"LinkedRestService_CurrentAndForecasted_Weather_properties_typeProperties_userName": {
+			"value": "dbkulkarni@gmail.com"
+		}
+	}
+}
