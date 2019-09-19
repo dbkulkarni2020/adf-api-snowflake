@@ -85,7 +85,7 @@
 					},
 					{
 						"name": "Destination",
-						"value": "webapi-call-output//data.json"
+						"value": "current-weather-output-files//"
 					}
 				],
 				"typeProperties": {
