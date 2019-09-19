@@ -47,7 +47,8 @@
 					"dataset": {
 						"referenceName": "Blob_CityList",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
