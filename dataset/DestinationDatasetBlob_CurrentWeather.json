@@ -10,6 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "CONCAT(\"Current_\", @activity('City').output)",
+					"type": "Expression"
+				},
 				"container": "current-weather-output-files"
 			}
 		}
