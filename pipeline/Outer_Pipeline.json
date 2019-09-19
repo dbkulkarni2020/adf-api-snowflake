@@ -1,0 +1,7 @@
+{
+	"name": "Outer_Pipeline",
+	"properties": {
+		"description": "This Pipeline execute inner pipeline which loops through list of cities and pulls weather logs for these cities",
+		"annotations": []
+	}
+}
