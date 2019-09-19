@@ -114,7 +114,10 @@
 				"inputs": [
 					{
 						"referenceName": "SourceDataset_ForecastedWeather",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"q": "Mumbai"
+						}
 					}
 				],
 				"outputs": [
