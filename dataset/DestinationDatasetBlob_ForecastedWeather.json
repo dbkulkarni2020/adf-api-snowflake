@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "CONCAT(\"Forcasted_\", @item('City').output)",
+					"value": "CONCAT('Forcasted_', @item('City').output)",
 					"type": "Expression"
 				},
 				"container": "forecasted-weather-output-files"
