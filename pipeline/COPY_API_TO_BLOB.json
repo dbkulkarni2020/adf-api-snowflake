@@ -4,7 +4,7 @@
 		"description": "This task copies data from API to BLOB Storage",
 		"activities": [
 			{
-				"name": "Copy_tpb",
+				"name": "Copy_Current_Weather_Data",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
