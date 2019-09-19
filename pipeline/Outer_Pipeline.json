@@ -4,7 +4,8 @@
 		"description": "This Pipeline execute inner pipeline which loops through list of cities and pulls weather logs for these cities",
 		"activities": [
 			{
-				"name": "Run_internal",
+				"name": "Exec_Copy_API_To_Blob",
+				"description": "This executes internal pipeline ",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
