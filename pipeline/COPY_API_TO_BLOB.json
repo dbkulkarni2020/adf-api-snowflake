@@ -125,7 +125,10 @@
 									"referenceName": "SourceDataset_ForecastedWeather",
 									"type": "DatasetReference",
 									"parameters": {
-										"q": "Mumbai"
+										"q": {
+											"value": "@pipeline().parameters.CityList",
+											"type": "Expression"
+										}
 									}
 								}
 							],
