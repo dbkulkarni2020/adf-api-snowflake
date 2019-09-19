@@ -9,6 +9,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"pipeline": {
+						"referenceName": "COPY_API_TO_BLOB",
+						"type": "PipelineReference"
+					},
 					"waitOnCompletion": true
 				}
 			}
