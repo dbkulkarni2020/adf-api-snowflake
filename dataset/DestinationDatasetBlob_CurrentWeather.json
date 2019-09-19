@@ -1,5 +1,5 @@
 {
-	"name": "DestinationDataset_tpb",
+	"name": "DestinationDatasetBlob_CurrentWeather",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BlobStorage_For_API_Output",
