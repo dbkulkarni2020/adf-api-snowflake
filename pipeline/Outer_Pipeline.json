@@ -57,7 +57,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Copy2",
+							"name": "Copy_ForcastedWeather",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
