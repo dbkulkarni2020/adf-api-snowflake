@@ -4,33 +4,6 @@
 		"description": "This Pipeline execute inner pipeline which loops through list of cities and pulls weather logs for these cities",
 		"activities": [
 			{
-				"name": "Exec_Copy_API_To_Blob",
-				"description": "This executes internal pipeline ",
-				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "CityList",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "COPY_API_TO_BLOB",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true,
-					"parameters": {
-						"CityList": {
-							"value": "@activity('CityList').output",
-							"type": "Expression"
-						}
-					}
-				}
-			},
-			{
 				"name": "CityList",
 				"type": "Lookup",
 				"dependsOn": [],
@@ -57,6 +30,149 @@
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "CityList",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('CityList').output",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy1",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Copy2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "http://api.openweathermap.org/data/2.5/weather?q=Pune&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474"
+								},
+								{
+									"name": "Destination",
+									"value": "current-weather-output-files//"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "RestSource",
+									"httpRequestTimeout": "00:01:40",
+									"requestInterval": "00.00:00:00.010",
+									"requestMethod": "GET",
+									"additionalHeaders": {
+										"q": "@pipeline().parameters.CityList"
+									}
+								},
+								"sink": {
+									"type": "JsonSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "JsonWriteSettings",
+										"quoteAllText": true,
+										"filePattern": "arrayOfObjects"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_CurrentWeather",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDatasetBlob_CurrentWeather",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Copy2",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "http://api.openweathermap.org/data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=hurn"
+								},
+								{
+									"name": "Destination",
+									"value": "forecasted-weather-output-files//"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "RestSource",
+									"httpRequestTimeout": "00:01:40",
+									"requestInterval": "00.00:00:00.010",
+									"requestMethod": "GET",
+									"additionalHeaders": {
+										"q": "Delhi"
+									}
+								},
+								"sink": {
+									"type": "JsonSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "JsonWriteSettings",
+										"quoteAllText": true,
+										"filePattern": "arrayOfObjects"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_ForecastedWeather",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDatasetBlob_ForecastedWeather",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
 				}
 			}
 		],
