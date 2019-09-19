@@ -69,13 +69,7 @@
 							"inputs": [
 								{
 									"referenceName": "SourceDataset_CurrentWeather",
-									"type": "DatasetReference",
-									"parameters": {
-										"q": {
-											"value": "@pipeline().parameters.CityList",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
