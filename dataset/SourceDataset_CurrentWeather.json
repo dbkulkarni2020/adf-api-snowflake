@@ -8,7 +8,7 @@
 		"parameters": {
 			"q": {
 				"type": "string",
-				"defaultValue": "pune"
+				"defaultValue": "oxford"
 			}
 		},
 		"annotations": [],
