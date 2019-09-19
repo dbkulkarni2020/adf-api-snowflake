@@ -1,0 +1,17 @@
+{
+	"name": "DestinationDatasetBlob_ForecastedWeather",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BlobStorage_For_API_Output",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "forecasted-weather-output-files"
+			}
+		}
+	}
+}
