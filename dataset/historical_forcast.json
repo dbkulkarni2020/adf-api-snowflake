@@ -10,6 +10,10 @@
 			"APPID": {
 				"type": "string",
 				"defaultValue": "3b57dd0a2acb41fc8430fc63feb7e474"
+			},
+			"q": {
+				"type": "string",
+				"defaultValue": "Pune"
 			}
 		},
 		"annotations": [],
