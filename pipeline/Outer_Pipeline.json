@@ -38,7 +38,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "Copy Current and Forecasted Weather",
 				"type": "ForEach",
 				"dependsOn": [
 					{
