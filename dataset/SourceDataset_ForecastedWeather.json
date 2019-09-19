@@ -8,7 +8,7 @@
 		"parameters": {
 			"q": {
 				"type": "string",
-				"defaultValue": "Mumbai"
+				"defaultValue": "hurn"
 			}
 		},
 		"annotations": [],
