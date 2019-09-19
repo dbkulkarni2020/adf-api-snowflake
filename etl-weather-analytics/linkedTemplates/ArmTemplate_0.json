@@ -151,13 +151,13 @@
 				"parameters": {
 					"q": {
 						"type": "string",
-						"defaultValue": "oxford"
+						"defaultValue": "Pune"
 					}
 				},
 				"annotations": [],
 				"type": "RestResource",
 				"typeProperties": {
-					"relativeUrl": "http://api.openweathermap.org/data/2.5/weather?APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=oxford"
+					"relativeUrl": "data/2.5/weather?APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}"
 				},
 				"schema": []
 			},
@@ -177,13 +177,13 @@
 				"parameters": {
 					"q": {
 						"type": "string",
-						"defaultValue": "hurn"
+						"defaultValue": "Solapur"
 					}
 				},
 				"annotations": [],
 				"type": "RestResource",
 				"typeProperties": {
-					"relativeUrl": "http://api.openweathermap.org/data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=hurn"
+					"relativeUrl": "data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}"
 				},
 				"schema": []
 			},
@@ -192,30 +192,72 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/COPY_API_TO_BLOB')]",
+			"name": "[concat(parameters('factoryName'), '/Outer_Pipeline')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "This task copies data from API to BLOB Storage",
+				"description": "This Pipeline execute inner pipeline which loops through list of cities and pulls weather logs for these cities",
 				"activities": [
 					{
-						"name": "ForEachCity",
-						"type": "ForEach",
+						"name": "City",
+						"type": "Lookup",
 						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "q",
+								"value": "Delhi"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": false,
+									"wildcardFileName": "*.json",
+									"enablePartitionDiscovery": false
+								}
+							},
+							"dataset": {
+								"referenceName": "Blob_CityList",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "Copy Current and Forecasted Weather",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "City",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@pipeline().parameters.CityList",
+								"value": "@activity('City').output.value",
 								"type": "Expression"
 							},
 							"isSequential": true,
 							"activities": [
 								{
-									"name": "Copy_Forecasted_Weather_Data1",
+									"name": "Forcasted_Weather_Copy",
 									"type": "Copy",
 									"dependsOn": [
 										{
-											"activity": "Copy_Current_Weather_Data1",
+											"activity": "Current_Weather_Copy",
 											"dependencyConditions": [
 												"Succeeded"
 											]
@@ -231,68 +273,7 @@
 									"userProperties": [
 										{
 											"name": "Source",
-											"value": "http://api.openweathermap.org/data/2.5/weather?q=Pune&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474"
-										},
-										{
-											"name": "Destination",
-											"value": "current-weather-output-files//"
-										}
-									],
-									"typeProperties": {
-										"source": {
-											"type": "RestSource",
-											"httpRequestTimeout": "00:01:40",
-											"requestInterval": "00.00:00:00.010",
-											"requestMethod": "GET"
-										},
-										"sink": {
-											"type": "JsonSink",
-											"storeSettings": {
-												"type": "AzureBlobStorageWriteSettings"
-											},
-											"formatSettings": {
-												"type": "JsonWriteSettings",
-												"quoteAllText": true,
-												"filePattern": "arrayOfObjects"
-											}
-										},
-										"enableStaging": false
-									},
-									"inputs": [
-										{
-											"referenceName": "SourceDataset_CurrentWeather",
-											"type": "DatasetReference",
-											"parameters": {
-												"q": {
-													"value": "@pipeline().parameters.CityList",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "DestinationDatasetBlob_CurrentWeather",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									]
-								},
-								{
-									"name": "Copy_Current_Weather_Data1",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [
-										{
-											"name": "Source",
-											"value": "http://api.openweathermap.org/data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474"
+											"value": "data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}"
 										},
 										{
 											"name": "Destination",
@@ -309,7 +290,11 @@
 										"sink": {
 											"type": "JsonSink",
 											"storeSettings": {
-												"type": "AzureBlobStorageWriteSettings"
+												"type": "AzureBlobStorageWriteSettings",
+												"copyBehavior": {
+													"value": "@activity('City').output",
+													"type": "Expression"
+												}
 											},
 											"formatSettings": {
 												"type": "JsonWriteSettings",
@@ -325,7 +310,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"q": {
-													"value": "@pipeline().parameters.CityList",
+													"value": "@activity('City').output",
 													"type": "Expression"
 												}
 											}
@@ -338,95 +323,84 @@
 											"parameters": {}
 										}
 									]
+								},
+								{
+									"name": "Current_Weather_Copy",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [
+										{
+											"name": "Source",
+											"value": "data/2.5/weather?APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}"
+										},
+										{
+											"name": "Destination",
+											"value": "current-weather-output-files//"
+										}
+									],
+									"typeProperties": {
+										"source": {
+											"type": "RestSource",
+											"httpRequestTimeout": "00:01:40",
+											"requestInterval": "00.00:00:00.010",
+											"requestMethod": "GET"
+										},
+										"sink": {
+											"type": "JsonSink",
+											"storeSettings": {
+												"type": "AzureBlobStorageWriteSettings",
+												"copyBehavior": {
+													"value": "@activity('City').output",
+													"type": "Expression"
+												}
+											},
+											"formatSettings": {
+												"type": "JsonWriteSettings",
+												"quoteAllText": true,
+												"filePattern": "arrayOfObjects"
+											}
+										},
+										"enableStaging": false
+									},
+									"inputs": [
+										{
+											"referenceName": "SourceDataset_CurrentWeather",
+											"type": "DatasetReference",
+											"parameters": {
+												"q": {
+													"value": "@activity('City').output",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DestinationDatasetBlob_CurrentWeather",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
 								}
 							]
 						}
 					}
 				],
-				"parameters": {
-					"CityList": {
-						"type": "array"
-					}
-				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_CurrentWeather')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDatasetBlob_CurrentWeather')]",
+				"[concat(variables('factoryId'), '/datasets/Blob_CityList')]",
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_ForecastedWeather')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDatasetBlob_ForecastedWeather')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Outer_Pipeline')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "This Pipeline execute inner pipeline which loops through list of cities and pulls weather logs for these cities",
-				"activities": [
-					{
-						"name": "Exec_Copy_API_To_Blob",
-						"description": "This executes internal pipeline ",
-						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "CityList",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "COPY_API_TO_BLOB",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {
-								"CityList": {
-									"value": "@activity('CityList').output.value",
-									"type": "Expression"
-								}
-							}
-						}
-					},
-					{
-						"name": "CityList",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "JsonSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"wildcardFileName": "*.json",
-									"enablePartitionDiscovery": false
-								}
-							},
-							"dataset": {
-								"referenceName": "Blob_CityList",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/COPY_API_TO_BLOB')]",
-				"[concat(variables('factoryId'), '/datasets/Blob_CityList')]"
+				"[concat(variables('factoryId'), '/datasets/DestinationDatasetBlob_ForecastedWeather')]",
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_CurrentWeather')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDatasetBlob_CurrentWeather')]"
 			]
 		}
 	]

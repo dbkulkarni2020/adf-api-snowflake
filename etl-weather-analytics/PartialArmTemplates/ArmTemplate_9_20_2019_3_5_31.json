@@ -6,22 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory Name",
 			"defaultValue": "etl-weather-analytics"
-		},
-		"BlobStorage_For_API_Output_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'BlobStorage_For_API_Output'"
-		},
-		"LinkedRestService_CurrentAndForecasted_Weather_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LinkedRestService_CurrentAndForecasted_Weather'"
-		},
-		"LinkedRestService_CurrentAndForecasted_Weather_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "http://api.openweathermap.org/"
-		},
-		"LinkedRestService_CurrentAndForecasted_Weather_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "dbkulkarni@gmail.com"
 		}
 	},
 	"variables": {
@@ -64,8 +48,7 @@
 							},
 							"dataset": {
 								"referenceName": "Blob_CityList",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							},
 							"firstRowOnly": false
 						}
@@ -156,8 +139,7 @@
 									"outputs": [
 										{
 											"referenceName": "DestinationDatasetBlob_ForecastedWeather",
-											"type": "DatasetReference",
-											"parameters": {}
+											"type": "DatasetReference"
 										}
 									]
 								},
@@ -221,8 +203,7 @@
 									"outputs": [
 										{
 											"referenceName": "DestinationDatasetBlob_CurrentWeather",
-											"type": "DatasetReference",
-											"parameters": {}
+											"type": "DatasetReference"
 										}
 									]
 								}
@@ -233,87 +214,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Blob_CityList')]",
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_ForecastedWeather')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDatasetBlob_ForecastedWeather')]",
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_CurrentWeather')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDatasetBlob_CurrentWeather')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Blob_CityList')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "BlobStorage_For_API_Output",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "config"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"city": {
-							"type": "string"
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/BlobStorage_For_API_Output')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDatasetBlob_CurrentWeather')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "BlobStorage_For_API_Output",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "current-weather-output-files"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/BlobStorage_For_API_Output')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDatasetBlob_ForecastedWeather')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "BlobStorage_For_API_Output",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "forecasted-weather-output-files"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/BlobStorage_For_API_Output')]"
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_CurrentWeather')]"
 			]
 		},
 		{
@@ -338,9 +240,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LinkedRestService_CurrentAndForecasted_Weather')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SourceDataset_ForecastedWeather')]",
@@ -363,43 +263,6 @@
 					"relativeUrl": "data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}"
 				},
 				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LinkedRestService_CurrentAndForecasted_Weather')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BlobStorage_For_API_Output')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "This is blob storage to store the output of the API Call.",
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('BlobStorage_For_API_Output_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LinkedRestService_CurrentAndForecasted_Weather')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "This linked service connects to http://api.openweathermap.org/",
-				"annotations": [],
-				"type": "RestService",
-				"typeProperties": {
-					"url": "[parameters('LinkedRestService_CurrentAndForecasted_Weather_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Basic",
-					"userName": "[parameters('LinkedRestService_CurrentAndForecasted_Weather_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('LinkedRestService_CurrentAndForecasted_Weather_password')]"
-					}
-				}
 			},
 			"dependsOn": []
 		}
