@@ -15,7 +15,7 @@
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "@concat(dataset().q)",
+				"value": "http://api.openweathermap.org/data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q={0}",
 				"type": "Expression"
 			}
 		},
