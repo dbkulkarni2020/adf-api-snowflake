@@ -1,0 +1,13 @@
+{
+	"name": "BlobStorage_For_API_Output",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "This is blob storage to store the output of the API Call.",
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=storageaccount2020;EndpointSuffix=core.windows.net;",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkVUTC1XRUFUSEVSLUFOQUxZVElDU19jMjk1MzQ0ZC0yMWRjLTQ1OTItODdmOS1mYmEzODc1NjUzYmYiDQp9"
+		}
+	}
+}
