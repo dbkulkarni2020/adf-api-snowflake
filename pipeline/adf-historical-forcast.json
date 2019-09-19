@@ -79,58 +79,6 @@
 									}
 								]
 							}
-						},
-						{
-							"name": "Copy Data2",
-							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "WebActivity1",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "RestSource",
-									"httpRequestTimeout": "00:01:40",
-									"requestInterval": "00.00:00:00.010",
-									"requestMethod": "GET"
-								},
-								"sink": {
-									"type": "JsonSink",
-									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings"
-									},
-									"formatSettings": {
-										"type": "JsonWriteSettings",
-										"quoteAllText": true,
-										"filePattern": "setOfObjects"
-									}
-								},
-								"enableStaging": false
-							},
-							"inputs": [
-								{
-									"referenceName": "historical_forcast",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "JSON_For_WebAPI_Output",
-									"type": "DatasetReference"
-								}
-							]
 						}
 					]
 				}
