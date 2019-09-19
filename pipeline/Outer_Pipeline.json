@@ -48,7 +48,12 @@
 						]
 					}
 				],
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "q",
+						"value": "Mumbai"
+					}
+				],
 				"typeProperties": {
 					"items": {
 						"value": "@activity('CityList').output.value",
