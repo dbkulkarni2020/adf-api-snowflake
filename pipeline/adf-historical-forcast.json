@@ -29,7 +29,7 @@
 						"referenceName": "Config_CityList_APICall",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": false
+					"firstRowOnly": true
 				}
 			},
 			{
