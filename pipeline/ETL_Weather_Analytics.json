@@ -1,5 +1,5 @@
 {
-	"name": "Outer_Pipeline",
+	"name": "ETL_Weather_Analytics",
 	"properties": {
 		"description": "This Pipeline execute inner pipeline which loops through list of cities and pulls weather logs for these cities",
 		"activities": [
