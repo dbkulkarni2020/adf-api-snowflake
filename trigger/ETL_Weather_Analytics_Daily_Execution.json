@@ -7,7 +7,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "Outer_Pipeline",
+					"referenceName": "ETL_Weather_Analytics",
 					"type": "PipelineReference"
 				}
 			}
