@@ -64,6 +64,36 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ETL_Weather_Analytics_Daily_Execution')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "This is scheduled ETL to run everyday at 8.30 AM UTC to capture current and forecast weather data for given 5 cities",
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2019-09-20T16:32:00.000Z",
+						"endTime": "2019-10-18T16:32:00.000Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								30
+							],
+							"hours": [
+								8
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Blob_CityList')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -157,7 +187,10 @@
 				"annotations": [],
 				"type": "RestResource",
 				"typeProperties": {
-					"relativeUrl": "data/2.5/weather?APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}"
+					"relativeUrl": {
+						"value": "data/2.5/weather?APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}",
+						"type": "Expression"
+					}
 				},
 				"schema": []
 			},
@@ -183,7 +216,10 @@
 				"annotations": [],
 				"type": "RestResource",
 				"typeProperties": {
-					"relativeUrl": "data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}"
+					"relativeUrl": {
+						"value": "data/2.5/forecast?mode=json&APIKEY=3b57dd0a2acb41fc8430fc63feb7e474&q=@{item().City}",
+						"type": "Expression"
+					}
 				},
 				"schema": []
 			},
@@ -192,7 +228,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Outer_Pipeline')]",
+			"name": "[concat(parameters('factoryName'), '/ETL_Weather_Analytics')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -401,46 +437,6 @@
 				"[concat(variables('factoryId'), '/datasets/DestinationDatasetBlob_ForecastedWeather')]",
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_CurrentWeather')]",
 				"[concat(variables('factoryId'), '/datasets/DestinationDatasetBlob_CurrentWeather')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ETL_Weather_Analytics_Daily_Execution')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "This is scheduled ETL to run everyday at 8.30 AM UTC to capture current and forecast weather data for given 5 cities",
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "Outer_Pipeline",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2019-09-20T16:32:00.000Z",
-						"endTime": "2019-10-18T16:32:00.000Z",
-						"timeZone": "UTC",
-						"schedule": {
-							"minutes": [
-								30
-							],
-							"hours": [
-								8
-							]
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Outer_Pipeline')]"
 			]
 		}
 	]
