@@ -4,14 +4,7 @@
 		"description": "This is scheduled ETL to run everyday at 8.30 AM UTC to capture current and forecast weather data for given 5 cities",
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "ETL_Weather_Analytics",
-					"type": "PipelineReference"
-				}
-			}
-		],
+		"pipelines": [],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
